@@ -17,19 +17,19 @@ function onInpute(e) {
  }
  countri.fetchCountries(name)
  .then(renderCountry)
- .catch(onCatch)
+ .catch(onCatchError)
 };
 
  function renderCountry(country) {
   clearInput();
-  console.log(country)
+ 
  if (country.length >= 11) {
   clearInput();
   Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
 return; 
 } else if (country.length === 1) {
   clearInput();
-  const aboutCountries = country.map(({name, capital, population, flags, languages}) => {
+  const infoCountries = country.map(({name, capital, population, flags, languages}) => {
     let lang = ''
     for (let key in languages) {
       lang = languages[key];
@@ -43,14 +43,13 @@ return;
     </div>
     `;
   }).join("");
-  console.log(aboutCountries)
-  info.insertAdjacentHTML('beforeend', aboutCountries);
+  info.insertAdjacentHTML('beforeend', infoCountries);
   return;
  } else {
   clearInput();
   const listName = country.map(({name, flags}) => {
     return `
-    <li><img src="${flags.svg}" alt="flag" width='20' height ='15' >${name.official}</li>
+    <li><img src="${flags.svg}" alt="flag" width='35' height ='15' >${name.official}</li>
     `;
   }).join("");
 
@@ -60,7 +59,7 @@ return;
  };
 
 
- function onCatch(error) {
+ function onCatchError(error) {
   if (error) {
     Notiflix.Notify.failure('Oops, there is no country with that name');
   }

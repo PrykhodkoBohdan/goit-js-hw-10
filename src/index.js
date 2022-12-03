@@ -36,7 +36,7 @@ return;
   }
     return `
     <div class="country-info-name">
-    <ul class="country-list"><li class="country-name"><img src="${flags.svg}" alt="flag" width='20' height ='15' >${name.official}</li></ul>
+    <ul class="country-list"><li class="country-name"><img src="${flags.svg}" alt="flag" width='35' height ='15' >${name.official}</li></ul>
     <p>Сapital: ${capital}</p>
     <p>Population: ${population}</p>
     <p>Languages: ${lang}</p>
